@@ -1,22 +1,15 @@
-import os
-
-
 class Window():
     def __init__(self,startCoords,width,height,outline='*',subWindow=False):
-        print(f"New window {startCoords},width:{width},height:{height}")
         self.startCoords = startCoords
         self.width = width
         self.height = height
         if subWindow:
-            self.hasOutlines = False
             self.verticalLines = []
             self.horizontalLines = []
         else :
-            self.hasOutlines = True
             self.verticalLines = [[startCoords[0],0,height,outline],[startCoords[0],startCoords[0]+width-1,height,outline]]
             self.horizontalLines = [[startCoords[1],0,width,outline],[startCoords[0]+height-1,0,width,outline]]
         self.subWindow = subWindow
-        self.childrens = []
         self.background = ''
 
 
