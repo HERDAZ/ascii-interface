@@ -131,8 +131,6 @@ class Window():
 
         return left,right
 
-    def newFloatingWindow():
-        print("TODO")
 
 def innitFrame(HSIZE:int,VSIZE:int,filling:str = " "):
     frame = [list(f"{filling*(HSIZE)}") for _ in range(VSIZE)]
