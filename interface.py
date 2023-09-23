@@ -54,7 +54,7 @@ class Window():
 
     def setBackground(self,filler='.'):
         if self.subWindow:
-            for i in range(self.height-1):
+            for i in range(self.height):
                 self.horizontalLines.append([self.startCoords[1]+i,self.startCoords[0],self.width,filler])
         else:
             for i in range(self.height-2):
@@ -73,9 +73,6 @@ class Window():
         ,self.width if self.subWindow else self.width-2
         ,self.height-topHeight-1
         ,subWindow=True)
-
-        self.childrens.append(top)
-        self.childrens.append(bottom)
 
         if self.background != '':
             top.setBackground(self.background)
@@ -106,9 +103,6 @@ class Window():
         ,self.height if self.subWindow else self.height-2
         ,subWindow=True)
 
-        self.childrens.append(left)
-        self.childrens.append(right)
-
         if self.background != '':
             left.setBackground(self.background)
             right.setBackground(self.background)
@@ -138,7 +132,7 @@ def getWindowsRenders(windows,getChildrens=False):
             vLines.append(lines)         
     return vLines,hLines
 
-def refreshScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[]):
+def refreshScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[],printFrame=True):
     for i in range(VSIZE):
         line = previousFrame[i]
         hFinishedLines,vFinishedLines = [],[]
@@ -162,5 +156,4 @@ def refreshScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[]):
         for vLine in vFinishedLines:
             verticalLines.remove(vLine)
         previousFrame[i] = line
-        print(''.join(line))
-
+        if printFrame:print(''.join(line))
