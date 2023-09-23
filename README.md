@@ -6,14 +6,14 @@ A python code to create ascii interface in the command line
 **Spliting windows**
 
 ``` python
-window.hSplit(ratio=50,spliter='-',fillSubWindows=False)
+window.hSplit(self,ratio=50,spliter='-',fillSubWindows=False)
 ```
 
 Split the window with a horizontal line with whatever spliter is set to. (If window has background, the subwindow wont inherit the background unless ```fillSubWindows = True```)
 Return the left and right subwindow in a tuple.
 
 ``` python
-window.vSplit(ratio=50,spliter='|',fillSubWindows=False)
+window.vSplit(self,ratio=50,spliter='|',fillSubWindows=False)
 ```
 
 Split the window with a vertical line with whatever spliter is set to. (If window has background, the subwindow wont inherit the background unless ```fillSubWindows = True```)
@@ -22,7 +22,7 @@ Returns the top and bottom subwindow in a tuple.
 **Setting window's background**
 
 ``` python
-window.setBackground(filler='.')
+window.setBackground(self,filler='.')
 ```
 
 Fills the window with whatever character you want. (If the window is splited, it's background will be deleted. To prevent that, use ```clean = False``` when splitting)
@@ -30,7 +30,7 @@ Fills the window with whatever character you want. (If the window is splited, it
 **Adding text**
 
 ``` python
-addText(self,text,centering="left")
+window.addText(self,text,centering="left")
 ```
 
 Add text to the window (duh). text has to only include character and newlines. The text will automaticaly be arranged to not wut words in half, until I implement the option to not have it arranged.```centering``` determine where hozintaly on the window the text will be. For now, the only choices for ```centering``` are ```"left"``` or ```"right"```. A ```"middle"``` option is to come.
