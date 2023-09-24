@@ -59,4 +59,4 @@ To update the frame, you need to collect all the horizontal and vertical lines o
 refrechScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[]):
 ```
 
-Goes thru the horizontal and vertical lines provided and update the previous frame, so that it only update the line that need updating.
+Goes trough the horizontal and vertical lines provided and update the previous frame, so that it only update the lines that need updating.
