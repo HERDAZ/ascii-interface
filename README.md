@@ -1,7 +1,6 @@
 # ascii-interface
 
-A python code to create ascii interface in the command line.
-
+A python code to create ascii interface in the command line
 ## Features
 
 **Spliting windows**
@@ -60,4 +59,4 @@ To update the frame, you need to collect all the horizontal and vertical lines o
 refrechScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[]):
 ```
 
-Goes through the horizontal and vertical lines provided and update the previous frame, so that it only update the line that need updating.
+Goes thru the horizontal and vertical lines provided and update the previous frame, so that it only update the line that need updating.
