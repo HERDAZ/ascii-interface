@@ -33,7 +33,7 @@ Fills the window with whatever character you want. (If the window is splited, it
 window.addText(self,text,centering="left")
 ```
 
-Add text to the window (duh). text has to only include character and newlines. The text will automaticaly be arranged to not wut words in half, until I implement the option to not have it arranged.```centering``` determine where hozintaly on the window the text will be. For now, the only choices for ```centering``` are ```"left"``` or ```"right"```. A ```"middle"``` option is to come.
+Add text to the window (duh). text has to only include character and newlines. The text will automaticaly be arranged to not wut words in half, until I implement the option to not have it arranged.```centering``` determine where hozintaly on the window the text will be. For now, the only choices for ```centering``` are ```"left"``` or ```"right"```. A ```"center"``` option is to come.
 
 ## Creating,updating and printing the frame
 
