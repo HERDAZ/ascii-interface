@@ -33,6 +33,8 @@ class Window():
                         n += 1
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word)-(1-a),word])
                         n += 1
+                    elif centering == 'center':
+                        exit("WORK IN PROGRESS")
                 else:
                     if centering == 'left':
                         self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line+word])
