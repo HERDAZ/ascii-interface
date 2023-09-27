@@ -18,7 +18,6 @@ class Window():
         word = ''
         line = ''
         n = 0 # line number
-        # if centering = right, line[2] = sCoords[0]+sWidth-len(line)
         a = 0 if self.subWindow else 1
         for i in text:
             if i == '\n':
@@ -33,13 +32,13 @@ class Window():
                         n += 1
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word)-(1-a),word])
                         n += 1
-                    elif centering == 'center':
-                        exit("WORK IN PROGRESS")
                 else:
                     if centering == 'left':
                         self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line+word])
                     elif centering == 'right':
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word)-len(line)-(1-a),line+word])
+                    elif centering == 'center':
+                        self.horizontalLines.append([self.startCoords[1]+n,int(self.width/2)-int((len(line+word)+1)/2),line+ ' ' +word])
                 n += 1
                 line,word = '',''
 
@@ -128,10 +127,12 @@ def innitFrame(HSIZE:int,VSIZE:int,filling:str = " "):
 def getWindowsRenders(windows,getChildrens=False):
     hLines,vLines = [],[]
     for window in windows:
-        for lines in window.horizontalLines:
-            hLines.append(lines)
-        for lines in window.verticalLines:
-            vLines.append(lines)         
+        for line in window.horizontalLines:
+            hLines.append(line)
+            print(line)
+        for line in window.verticalLines:
+            vLines.append(line)         
+            print(line)
     return vLines,hLines
 
 def refreshScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[],printFrame=True):
