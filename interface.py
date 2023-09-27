@@ -43,7 +43,10 @@ class Window():
 
             elif i == ' ':
                 if len(word) + 1 + len(line) > self.width:
-                    self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
+                    if centering == "left":
+                        self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
+                    elif centering == "right":
+                        self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+self.width-len(line),line])
                     n += 1
                     line = ''
                 else:
@@ -128,8 +131,10 @@ def getWindowsRenders(windows,getChildrens=False):
     for window in windows:
         for lines in window.horizontalLines:
             hLines.append(lines)
+            print(lines)
         for lines in window.verticalLines:
             vLines.append(lines)         
+            print(lines)
     return vLines,hLines
 
 def refreshScreen(previousFrame,VSIZE,horizontalLines=[],verticalLines=[],printFrame=True):
