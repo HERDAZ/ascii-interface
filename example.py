@@ -5,8 +5,8 @@ VSIZE = 20
 
 frame = interface.innitFrame(HSIZE,VSIZE) # innitialise the frame
 mainW = interface.Window([0,0],HSIZE,VSIZE) # create the main window
-subWindows = mainW.vSplit() # split it verticaly
-subWindows[0].addText("This is some text\nwith a newline\nand here come the 3th line",centering='center') # add text to theleft subWindow
+subWindows = mainW.vSplit(ratio = 30) # split it verticaly
+subWindows[0].addText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",centering='center') # add text to theleft subWindow
 subWindows[1].setBackground('X') # set the background of the right subwindow
 
 renders = interface.getWindowsRenders([mainW,subWindows[0],subWindows[1]]) # get all lines from the windows

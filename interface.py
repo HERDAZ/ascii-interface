@@ -32,19 +32,27 @@ class Window():
                         n += 1
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word)-(1-a),word])
                         n += 1
+                    elif centering == "center":
+                        self.horizontalLines.append([self.startCoords[1]+n,int(self.width/2)-int((len(line+word))/2),line])
+                        n += 1
+                        self.horizontalLines.append([self.startCoords[1]+n,int(self.width/2)-int(len(word)/2),word])
+                        n += 1
                 else:
                     if centering == 'left':
                         self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line+word])
                     elif centering == 'right':
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word)-len(line)-(1-a),line+word])
                     elif centering == 'center':
-                        self.horizontalLines.append([self.startCoords[1]+n,int(self.width/2)-int((len(line+word)+1)/2),line+ ' ' +word])
+                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+int((self.width-len(line+word))/2),line+word])
                 n += 1
                 line,word = '',''
 
             elif i == ' ':
                 if len(word) + 1 + len(line) > self.width:
-                    self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
+                    if centering == 'left':
+                        self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
+                    elif centering == 'center':
+                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+int((self.width-len(line))/2),line])
                     n += 1
                     line = ''
                 else:
