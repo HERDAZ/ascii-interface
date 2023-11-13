@@ -65,7 +65,6 @@ class Window():
                 else:
                     word += i
         elif centering == 'center':
-            print(self.height,self.width,self.startCoords,"a"*32)
             for i in text:
                 if i == '\n':
                     if len(word) + 2 + len(line) > self.width :
@@ -158,10 +157,9 @@ def innitFrame(HSIZE:int,VSIZE:int,filling:str = " "):
     frame = [list(f"{filling*(HSIZE)}") for _ in range(VSIZE)]
     return frame
 
-def getWindowsRenders(windows,getChildrens=False,printLines=True):
+def getWindowsRenders(windows,getChildrens=False,printLines=False):
     hLines,vLines = [],[]
     for window in windows:
-        print(window.width, window.height)
         for line in window.horizontalLines:
             hLines.append(line)
             if printLines:print(line)
