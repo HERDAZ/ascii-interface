@@ -14,7 +14,7 @@ class Window():
 
 
     def addText(self,text,centering='left'):
-        text += '\n'
+        text += '\n'*(text[-1]!='\n')
         word = ''
         line = ''
         n = 0 # line number
@@ -22,23 +22,22 @@ class Window():
         if centering == 'left':
             for i in text:
                 if i == '\n':
-                    if len(word) + 1 + len(line) > self.width:
+                    if len(word) + 2 + len(line) > self.width:
                             self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
-                            n += 1
                             self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,word])
                             n += 1
                     else:
-                        self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line+word])
+                        self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line+' '+word])
                     n += 1
                     line,word = '',''
 
                 elif i == ' ':
-                    if len(word) + 1 + len(line) > self.width:
+                    if len(word) + 2 + len(line) > self.width:
                         self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
                         n += 1
-                        line = ''
+                        line = word
                     else:
-                        line += word + ' '
+                        line += ' '*(len(line) > 0) +  word 
                         word = ''
                 else:
                     word += i
@@ -46,23 +45,22 @@ class Window():
         elif centering == 'right':
             for i in text:
                 if i == '\n':
-                    if len(word) + 1 + len(line) > self.width:
-                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(line),line])
-                        n += 1
-                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word),word])
+                    if len(word) + 2 + len(line) > self.width:
+                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-1-len(line),line])
+                        self.horizontalLines.append([self.startCoords[1]+n+1,self.startCoords[0]+self.width-1-len(word),word])
                         n += 1
                     else:
-                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-len(word)-len(line),line+word])
+                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-2-len(word)-len(line),line+' '+word])
                     n += 1
                     line,word = '',''
 
                 elif i == ' ':
-                    if len(word) + 1 + len(line) > self.width:
-                        self.horizontalLines.append([self.startCoords[1]+n+a,self.startCoords[0]+a,line])
+                    if len(word) + 2 + len(line) > self.width:
+                        self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+self.width-1-len(line),line])
                         n += 1
-                        line = ''
+                        line = word
                     else:
-                        line += word + ' '
+                        line += ' '*(len(line) > 0) +  word 
                         word = ''
                 else:
                     word += i
@@ -70,14 +68,14 @@ class Window():
             print(self.height,self.width,self.startCoords,"a"*32)
             for i in text:
                 if i == '\n':
-                    if len(word) + 1 + len(line) > self.width - 1:
+                    if len(word) + 2 + len(line) > self.width :
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+int((self.width-len(line))/2)+a,line])
                         n += 1
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+int((self.width-len(word))/2)+a,word])
                         n += 1
                     line,word = '',''
                 elif i == ' ':
-                    if len(word) + 1 + len(line) > self.width - 1:
+                    if len(word) + 2 + len(line) > self.width :
                         self.horizontalLines.append([self.startCoords[1]+n,self.startCoords[0]+int((self.width-len(line))/2)+a,line])
                         n += 1
                         line = word
@@ -163,6 +161,7 @@ def innitFrame(HSIZE:int,VSIZE:int,filling:str = " "):
 def getWindowsRenders(windows,getChildrens=False,printLines=True):
     hLines,vLines = [],[]
     for window in windows:
+        print(window.width, window.height)
         for line in window.horizontalLines:
             hLines.append(line)
             if printLines:print(line)
