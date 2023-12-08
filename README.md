@@ -47,7 +47,7 @@ Creates the window with lenght ```VSIZE``` and width ```HSIZE```.```startCoords`
 innitFrame(HSIZE,VSIZE,filling = " ")
 ```
 
-When starting, you must generate a frame, which is an array of array filled with a character. ``` HSIZE ``` and ``` VSIZE ``` are the dimetion of your main window.
+When starting, you must generate a frame, which is an array of array filled with a character. ``` HSIZE ``` and ``` VSIZE ``` are the dimension of your main window.
 
 ``` python
 getWindowsRenders(windows)
